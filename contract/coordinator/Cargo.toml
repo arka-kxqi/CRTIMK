@@ -1,0 +1,37 @@
+[package]
+name = "coordinator"
+version = "1.0.0"
+authors = ["ad0ll <ad0ll@ad0ll.io>",
+    "amit <amit@need.his.email.dev>"]
+edition = "2021"
+[lib]
+name= "coordinator"
+#[target.'cfg(not(target_arch = "wasm32"))'.lib]
+crate-type = ["cdylib"]
+
+#[target.'cfg(target_arch = "wasm32")'.lib]
+#crate-type = ["cdylib"]
+
+# Generally, most external libraries don't seem to work when compiling to wasm.
+#If you add a dependency, and the app breaks, try removing it
+# Test dependencies go under dev-dependencies
+[dependencies]
+near-sdk = "4.0.0"
+uint = { version = "0.9.3", default-features = false }
+regex = "1.6.0"
+borsh = "0.9"
+near-units = "0.2.0"
+serde_json = "1.0" # Not sure if this is required, but tutorial shows it
+
+# These are used for integration tests, which don't build against wasm32
+# wasm32 builds will fail, if some/all of these are included under [dependencies]
+[dev-dependencies]
+rand = "0.8.5"
+anyhow = "1.0"
+tokio = { version = "1", features = ["full"] }
+near-workspaces = "0.6.0"
+near-sandbox-utils = "0.6.0"
+chrono = "0.4.22"
+
+
+#[target.'cfg(not(target_arch = "wasm32"))'.dependencies]

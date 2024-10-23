@@ -1,0 +1,4 @@
+neardev
+*.log
+.env.personal
+.env.bak

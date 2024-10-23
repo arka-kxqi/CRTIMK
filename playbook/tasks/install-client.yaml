@@ -1,0 +1,28 @@
+- name: Fetch repo
+  ansible.builtin.git:
+    repo: https://github.com/ad0ll/{{ repo_name }}.git
+    dest: "{{ home }}/{{ repo_dir }}"
+    version: main
+    key_file: "{{ home }}/.ssh/id_rsa" # TODO Should be removed before submission
+    force: true
+- name: Create storage directory
+  ansible.builtin.file:
+    path: "{{ bounty_storage_dir }}"
+    state: directory
+    recurse: true
+- name: Install execution client
+  ansible.builtin.shell: 
+    cmd: | 
+      yarn install
+      yarn tsc
+    chdir: "{{ home }}/{{ repo_dir }}/execution-client"
+- name: Install default .env
+  ansible.builtin.template:
+    src: ../files/default.env.j2
+    dest: "{{ home }}/{{ repo_dir }}/execution-client/.env"
+    force: true
+- name: Copy ecosystem.config.js to directory
+  ansible.builtin.template:
+    src: ../files/ecosystem.config.js.j2
+    dest: "{{ installation_dir }}/ecosystem.config.js"
+    force: true

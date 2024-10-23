@@ -1,0 +1,18 @@
+- name: Install dependencies
+  become: true
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: true
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - wget
+    - git
+    - unzip
+    - tar
+    - gnupg-agent
+    - software-properties-common
+    - unattended-upgrades
+    - net-tools

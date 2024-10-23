@@ -1,0 +1,13 @@
+**/node_modules
+.idea
+
+# Frontend
+/frontend/node_modules
+/frontend/dist
+/frontend/.parcel-cache
+target
+node_modules
+.env.personal
+.DS_Store
+dist
+.password

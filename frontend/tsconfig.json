@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "jsx": "react"
+  },
+  "include": ["src", "assets"]
+}

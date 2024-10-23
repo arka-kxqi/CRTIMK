@@ -1,0 +1,14 @@
+- name: Install system
+  hosts: localhost
+  vars:
+
+    home: "/root"
+  tasks:
+    - name: install system
+      include: tasks/install-system.yaml
+    - name: install docker
+      include: tasks/install-docker.yaml
+#    - name: Install nvm
+#      include: tasks/install-nvm.yaml
+    - name: install nodejs
+      include: tasks/install-nodejs.yaml
